@@ -919,7 +919,7 @@
 		CE9DE66D1C6A78D70060793F /* AWSMQTTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9DE6461C6A78D70060793F /* AWSMQTTSession.m */; };
 		CE9DE66E1C6A78D70060793F /* AWSMQttTxFlow.h in Headers */ = {isa = PBXBuildFile; fileRef = CE9DE6471C6A78D70060793F /* AWSMQttTxFlow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE9DE66F1C6A78D70060793F /* AWSMQttTxFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9DE6481C6A78D70060793F /* AWSMQttTxFlow.m */; };
-		CE9DE6701C6A78D70060793F /* AWSSRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = CE9DE64A1C6A78D70060793F /* AWSSRWebSocket.h */; };
+		CE9DE6701C6A78D70060793F /* AWSSRWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = CE9DE64A1C6A78D70060793F /* AWSSRWebSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE9DE6711C6A78D70060793F /* AWSSRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9DE64B1C6A78D70060793F /* AWSSRWebSocket.m */; };
 		CE9DE6751C6A79210060793F /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0D416D1C6A66E5006B91B5 /* AWSCore.framework */; };
 		CE9DE67E1C6A79350060793F /* AWSIoTDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9DE6781C6A79350060793F /* AWSIoTDataTests.m */; };

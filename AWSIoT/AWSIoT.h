@@ -52,3 +52,4 @@ FOUNDATION_EXPORT const unsigned char AWSIoTVersionString[] DEPRECATED_MSG_ATTRI
 #import "AWSMQTTEncoder.h"
 #import "AWSIoTWebSocketOutputStream.h"
 #import "AWSIoTMQTTClient.h"
+#import "AWSSRWebSocket.h"

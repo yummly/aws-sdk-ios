@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -161,6 +161,7 @@ typedef NS_ENUM(NSInteger, AWSLambdaRuntime) {
     AWSLambdaRuntimeDotnetcore20,
     AWSLambdaRuntimeDotnetcore21,
     AWSLambdaRuntimeDotnetcore31,
+    AWSLambdaRuntimeDotnet6,
     AWSLambdaRuntimeNodejs43Edge,
     AWSLambdaRuntimeGo1X,
     AWSLambdaRuntimeRuby25,
@@ -253,6 +254,7 @@ typedef NS_ENUM(NSInteger, AWSLambdaTracingMode) {
 @class AWSLambdaEnvironment;
 @class AWSLambdaEnvironmentError;
 @class AWSLambdaEnvironmentResponse;
+@class AWSLambdaEphemeralStorage;
 @class AWSLambdaEventSourceMappingConfiguration;
 @class AWSLambdaFileSystemConfig;
 @class AWSLambdaFilter;
@@ -485,6 +487,11 @@ typedef NS_ENUM(NSInteger, AWSLambdaTracingMode) {
  <p>The Amazon Web Services service or account that invokes the function. If you specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who can invoke the function through that service.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable principal;
+
+/**
+ <p>The identifier for your organization in Organizations. Use this to grant permissions to all the Amazon Web Services accounts under this organization.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable principalOrgID;
 
 /**
  <p>Specify a version or alias to add permissions to a published version of the function.</p>
@@ -865,6 +872,11 @@ typedef NS_ENUM(NSInteger, AWSLambdaTracingMode) {
 @property (nonatomic, strong) AWSLambdaEnvironment * _Nullable environment;
 
 /**
+ <p>The size of the function’s /tmp directory in MB. The default value is 512, but can be any whole number between 512 and 10240 MB.</p>
+ */
+@property (nonatomic, strong) AWSLambdaEphemeralStorage * _Nullable ephemeralStorage;
+
+/**
  <p>Connection settings for an Amazon EFS file system.</p>
  */
 @property (nonatomic, strong) NSArray<AWSLambdaFileSystemConfig *> * _Nullable fileSystemConfigs;
@@ -1172,6 +1184,20 @@ typedef NS_ENUM(NSInteger, AWSLambdaTracingMode) {
 @end
 
 /**
+ <p>The size of the function’s /tmp directory in MB. The default value is 512, but can be any whole number between 512 and 10240 MB.</p>
+ Required parameters: [Size]
+ */
+@interface AWSLambdaEphemeralStorage : AWSModel
+
+
+/**
+ <p>The size of the function’s /tmp directory.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable size;
+
+@end
+
+/**
  <p>A mapping between an Amazon Web Services resource and a Lambda function. For details, see <a>CreateEventSourceMapping</a>.</p>
  */
 @interface AWSLambdaEventSourceMappingConfiguration : AWSModel
@@ -1435,6 +1461,11 @@ typedef NS_ENUM(NSInteger, AWSLambdaTracingMode) {
  <p>The function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html">environment variables</a>.</p>
  */
 @property (nonatomic, strong) AWSLambdaEnvironmentResponse * _Nullable environment;
+
+/**
+ <p>The size of the function’s /tmp directory in MB. The default value is 512, but can be any whole number between 512 and 10240 MB.</p>
+ */
+@property (nonatomic, strong) AWSLambdaEphemeralStorage * _Nullable ephemeralStorage;
 
 /**
  <p>Connection settings for an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html">Amazon EFS file system</a>.</p>
@@ -3476,7 +3507,7 @@ typedef NS_ENUM(NSInteger, AWSLambdaTracingMode) {
 @property (nonatomic, strong) NSString * _Nullable functionName;
 
 /**
- <p>URI of a container image in the Amazon ECR registry.</p>
+ <p>URI of a container image in the Amazon ECR registry. Do not use for a function defined with a .zip file archive.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable imageUri;
 
@@ -3491,12 +3522,12 @@ typedef NS_ENUM(NSInteger, AWSLambdaTracingMode) {
 @property (nonatomic, strong) NSString * _Nullable revisionId;
 
 /**
- <p>An Amazon S3 bucket in the same Amazon Web Services Region as your function. The bucket can be in a different Amazon Web Services account.</p>
+ <p>An Amazon S3 bucket in the same Amazon Web Services Region as your function. The bucket can be in a different Amazon Web Services account. Use only with a function defined with a .zip file archive deployment package.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable s3Bucket;
 
 /**
- <p>The Amazon S3 key of the deployment package.</p>
+ <p>The Amazon S3 key of the deployment package. Use only with a function defined with a .zip file archive deployment package.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable s3Key;
 
@@ -3506,7 +3537,7 @@ typedef NS_ENUM(NSInteger, AWSLambdaTracingMode) {
 @property (nonatomic, strong) NSString * _Nullable s3ObjectVersion;
 
 /**
- <p>The base64-encoded contents of the deployment package. Amazon Web Services SDK and Amazon Web Services CLI clients handle the encoding for you.</p>
+ <p>The base64-encoded contents of the deployment package. Amazon Web Services SDK and Amazon Web Services CLI clients handle the encoding for you. Use only with a function defined with a .zip file archive deployment package.</p>
  */
 @property (nonatomic, strong) NSData * _Nullable zipFile;
 
@@ -3532,6 +3563,11 @@ typedef NS_ENUM(NSInteger, AWSLambdaTracingMode) {
  <p>Environment variables that are accessible from function code during execution.</p>
  */
 @property (nonatomic, strong) AWSLambdaEnvironment * _Nullable environment;
+
+/**
+ <p>The size of the function’s /tmp directory in MB. The default value is 512, but can be any whole number between 512 and 10240 MB.</p>
+ */
+@property (nonatomic, strong) AWSLambdaEphemeralStorage * _Nullable ephemeralStorage;
 
 /**
  <p>Connection settings for an Amazon EFS file system.</p>

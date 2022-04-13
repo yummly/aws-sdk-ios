@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -54,6 +54,8 @@
 - (void) test_AWSComprehendDeleteEndpointResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDeleteEntityRecognizerRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDeleteEntityRecognizerResponse API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendDeleteResourcePolicyRequest API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendDeleteResourcePolicyResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDescribeDocumentClassificationJobRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDescribeDocumentClassificationJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDescribeDocumentClassifierRequest API_AVAILABLE(ios(11));
@@ -72,8 +74,12 @@
 - (void) test_AWSComprehendDescribeKeyPhrasesDetectionJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDescribePiiEntitiesDetectionJobRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDescribePiiEntitiesDetectionJobResponse API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendDescribeResourcePolicyRequest API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendDescribeResourcePolicyResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDescribeSentimentDetectionJobRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDescribeSentimentDetectionJobResponse API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendDescribeTargetedSentimentDetectionJobRequest API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendDescribeTargetedSentimentDetectionJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDescribeTopicsDetectionJobRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDescribeTopicsDetectionJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendDetectDominantLanguageRequest API_AVAILABLE(ios(11));
@@ -121,6 +127,8 @@
 - (void) test_AWSComprehendEntityTypesListItem API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendEventsDetectionJobFilter API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendEventsDetectionJobProperties API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendImportModelRequest API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendImportModelResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendInputDataConfig API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendKeyPhrase API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendKeyPhrasesDetectionJobFilter API_AVAILABLE(ios(11));
@@ -151,6 +159,8 @@
 - (void) test_AWSComprehendListSentimentDetectionJobsResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendListTagsForResourceRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendListTagsForResourceResponse API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendListTargetedSentimentDetectionJobsRequest API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendListTargetedSentimentDetectionJobsResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendListTopicsDetectionJobsRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendListTopicsDetectionJobsResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendOutputDataConfig API_AVAILABLE(ios(11));
@@ -159,6 +169,8 @@
 - (void) test_AWSComprehendPiiEntitiesDetectionJobProperties API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendPiiEntity API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendPiiOutputDataConfig API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendPutResourcePolicyRequest API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendPutResourcePolicyResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendRedactionConfig API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendSentimentDetectionJobFilter API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendSentimentDetectionJobProperties API_AVAILABLE(ios(11));
@@ -177,6 +189,8 @@
 - (void) test_AWSComprehendStartPiiEntitiesDetectionJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStartSentimentDetectionJobRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStartSentimentDetectionJobResponse API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendStartTargetedSentimentDetectionJobRequest API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendStartTargetedSentimentDetectionJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStartTopicsDetectionJobRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStartTopicsDetectionJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStopDominantLanguageDetectionJobRequest API_AVAILABLE(ios(11));
@@ -191,6 +205,8 @@
 - (void) test_AWSComprehendStopPiiEntitiesDetectionJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStopSentimentDetectionJobRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStopSentimentDetectionJobResponse API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendStopTargetedSentimentDetectionJobRequest API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendStopTargetedSentimentDetectionJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStopTrainingDocumentClassifierRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStopTrainingDocumentClassifierResponse API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendStopTrainingEntityRecognizerRequest API_AVAILABLE(ios(11));
@@ -199,6 +215,8 @@
 - (void) test_AWSComprehendTag API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendTagResourceRequest API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendTagResourceResponse API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendTargetedSentimentDetectionJobFilter API_AVAILABLE(ios(11));
+- (void) test_AWSComprehendTargetedSentimentDetectionJobProperties API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendTopicsDetectionJobFilter API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendTopicsDetectionJobProperties API_AVAILABLE(ios(11));
 - (void) test_AWSComprehendUntagResourceRequest API_AVAILABLE(ios(11));
@@ -351,6 +369,14 @@
     [self validateSecureCodingForClass:[AWSComprehendDeleteEntityRecognizerResponse class]];
 }
 
+- (void) test_AWSComprehendDeleteResourcePolicyRequest {
+    [self validateSecureCodingForClass:[AWSComprehendDeleteResourcePolicyRequest class]];
+}
+
+- (void) test_AWSComprehendDeleteResourcePolicyResponse {
+    [self validateSecureCodingForClass:[AWSComprehendDeleteResourcePolicyResponse class]];
+}
+
 - (void) test_AWSComprehendDescribeDocumentClassificationJobRequest {
     [self validateSecureCodingForClass:[AWSComprehendDescribeDocumentClassificationJobRequest class]];
 }
@@ -423,12 +449,28 @@
     [self validateSecureCodingForClass:[AWSComprehendDescribePiiEntitiesDetectionJobResponse class]];
 }
 
+- (void) test_AWSComprehendDescribeResourcePolicyRequest {
+    [self validateSecureCodingForClass:[AWSComprehendDescribeResourcePolicyRequest class]];
+}
+
+- (void) test_AWSComprehendDescribeResourcePolicyResponse {
+    [self validateSecureCodingForClass:[AWSComprehendDescribeResourcePolicyResponse class]];
+}
+
 - (void) test_AWSComprehendDescribeSentimentDetectionJobRequest {
     [self validateSecureCodingForClass:[AWSComprehendDescribeSentimentDetectionJobRequest class]];
 }
 
 - (void) test_AWSComprehendDescribeSentimentDetectionJobResponse {
     [self validateSecureCodingForClass:[AWSComprehendDescribeSentimentDetectionJobResponse class]];
+}
+
+- (void) test_AWSComprehendDescribeTargetedSentimentDetectionJobRequest {
+    [self validateSecureCodingForClass:[AWSComprehendDescribeTargetedSentimentDetectionJobRequest class]];
+}
+
+- (void) test_AWSComprehendDescribeTargetedSentimentDetectionJobResponse {
+    [self validateSecureCodingForClass:[AWSComprehendDescribeTargetedSentimentDetectionJobResponse class]];
 }
 
 - (void) test_AWSComprehendDescribeTopicsDetectionJobRequest {
@@ -619,6 +661,14 @@
     [self validateSecureCodingForClass:[AWSComprehendEventsDetectionJobProperties class]];
 }
 
+- (void) test_AWSComprehendImportModelRequest {
+    [self validateSecureCodingForClass:[AWSComprehendImportModelRequest class]];
+}
+
+- (void) test_AWSComprehendImportModelResponse {
+    [self validateSecureCodingForClass:[AWSComprehendImportModelResponse class]];
+}
+
 - (void) test_AWSComprehendInputDataConfig {
     [self validateSecureCodingForClass:[AWSComprehendInputDataConfig class]];
 }
@@ -739,6 +789,14 @@
     [self validateSecureCodingForClass:[AWSComprehendListTagsForResourceResponse class]];
 }
 
+- (void) test_AWSComprehendListTargetedSentimentDetectionJobsRequest {
+    [self validateSecureCodingForClass:[AWSComprehendListTargetedSentimentDetectionJobsRequest class]];
+}
+
+- (void) test_AWSComprehendListTargetedSentimentDetectionJobsResponse {
+    [self validateSecureCodingForClass:[AWSComprehendListTargetedSentimentDetectionJobsResponse class]];
+}
+
 - (void) test_AWSComprehendListTopicsDetectionJobsRequest {
     [self validateSecureCodingForClass:[AWSComprehendListTopicsDetectionJobsRequest class]];
 }
@@ -769,6 +827,14 @@
 
 - (void) test_AWSComprehendPiiOutputDataConfig {
     [self validateSecureCodingForClass:[AWSComprehendPiiOutputDataConfig class]];
+}
+
+- (void) test_AWSComprehendPutResourcePolicyRequest {
+    [self validateSecureCodingForClass:[AWSComprehendPutResourcePolicyRequest class]];
+}
+
+- (void) test_AWSComprehendPutResourcePolicyResponse {
+    [self validateSecureCodingForClass:[AWSComprehendPutResourcePolicyResponse class]];
 }
 
 - (void) test_AWSComprehendRedactionConfig {
@@ -843,6 +909,14 @@
     [self validateSecureCodingForClass:[AWSComprehendStartSentimentDetectionJobResponse class]];
 }
 
+- (void) test_AWSComprehendStartTargetedSentimentDetectionJobRequest {
+    [self validateSecureCodingForClass:[AWSComprehendStartTargetedSentimentDetectionJobRequest class]];
+}
+
+- (void) test_AWSComprehendStartTargetedSentimentDetectionJobResponse {
+    [self validateSecureCodingForClass:[AWSComprehendStartTargetedSentimentDetectionJobResponse class]];
+}
+
 - (void) test_AWSComprehendStartTopicsDetectionJobRequest {
     [self validateSecureCodingForClass:[AWSComprehendStartTopicsDetectionJobRequest class]];
 }
@@ -899,6 +973,14 @@
     [self validateSecureCodingForClass:[AWSComprehendStopSentimentDetectionJobResponse class]];
 }
 
+- (void) test_AWSComprehendStopTargetedSentimentDetectionJobRequest {
+    [self validateSecureCodingForClass:[AWSComprehendStopTargetedSentimentDetectionJobRequest class]];
+}
+
+- (void) test_AWSComprehendStopTargetedSentimentDetectionJobResponse {
+    [self validateSecureCodingForClass:[AWSComprehendStopTargetedSentimentDetectionJobResponse class]];
+}
+
 - (void) test_AWSComprehendStopTrainingDocumentClassifierRequest {
     [self validateSecureCodingForClass:[AWSComprehendStopTrainingDocumentClassifierRequest class]];
 }
@@ -929,6 +1011,14 @@
 
 - (void) test_AWSComprehendTagResourceResponse {
     [self validateSecureCodingForClass:[AWSComprehendTagResourceResponse class]];
+}
+
+- (void) test_AWSComprehendTargetedSentimentDetectionJobFilter {
+    [self validateSecureCodingForClass:[AWSComprehendTargetedSentimentDetectionJobFilter class]];
+}
+
+- (void) test_AWSComprehendTargetedSentimentDetectionJobProperties {
+    [self validateSecureCodingForClass:[AWSComprehendTargetedSentimentDetectionJobProperties class]];
 }
 
 - (void) test_AWSComprehendTopicsDetectionJobFilter {

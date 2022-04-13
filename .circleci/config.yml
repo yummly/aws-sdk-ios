@@ -13,6 +13,16 @@
 version: 2.1
 
 commands:
+  restore_gem:
+    steps:
+      - restore_cache:
+          key: 1-gems-{{ checksum "Gemfile.lock" }}
+      - run: bundle check || bundle install --path vendor/bundle --clean
+      - save_cache:
+          key: 1-gems-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
   update_brew:
     description: >-
       Update Homebrew
@@ -253,6 +263,7 @@ jobs:
     steps:
       - skip_job_unless_required
       - checkout_with_cache
+      - restore_gem
       - run:
           name: Git GC
           command: git gc
@@ -300,6 +311,7 @@ jobs:
     steps:
       - skip_job_unless_required
       - checkout_with_cache
+      - restore_gem
       - set_environment_variables
       - pre_start_simulator
       - make_artifacts_directory
@@ -353,6 +365,7 @@ jobs:
     steps:
       - skip_job_unless_required
       - checkout_with_cache
+      - restore_gem
       - skip_test_job_by_commit_message
       - set_environment_variables
       - pre_start_simulator
@@ -453,13 +466,7 @@ jobs:
     steps:
       - skip_job_unless_required
       - checkout_with_cache
-      - run:
-          # Note that this invocation of cocoapods_release requires at least
-          # CocoaPods 1.9.3, and cocoalpods-trunk 1.5.0, since it uses the
-          # `--synchronous` flag. CocoaPods 1.9.3 comes with the 12.1.0 Xcode
-          # image, but just to be safe, we'll manually update cocoapods-trunk
-          name: Update cocoapods-trunk to support --synchronous flag
-          command: gem update cocoapods-trunk
+      - restore_gem
       - run:
           name: Release CocoaPods
           command: python3 ./CircleciScripts/cocoapods_release.py
@@ -471,10 +478,7 @@ jobs:
     steps:
       - skip_job_unless_required
       - checkout_with_cache
-      - run:
-          name: Install jazzy
-          command: |
-            sudo gem install jazzy --source http://rubygems.org
+      - restore_gem
       - run:
           name: Generate documents
           command: bash ./CircleciScripts/generate_documentation.sh

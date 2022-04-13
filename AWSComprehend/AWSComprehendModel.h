@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -268,6 +268,8 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @class AWSComprehendDeleteEndpointResponse;
 @class AWSComprehendDeleteEntityRecognizerRequest;
 @class AWSComprehendDeleteEntityRecognizerResponse;
+@class AWSComprehendDeleteResourcePolicyRequest;
+@class AWSComprehendDeleteResourcePolicyResponse;
 @class AWSComprehendDescribeDocumentClassificationJobRequest;
 @class AWSComprehendDescribeDocumentClassificationJobResponse;
 @class AWSComprehendDescribeDocumentClassifierRequest;
@@ -286,8 +288,12 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @class AWSComprehendDescribeKeyPhrasesDetectionJobResponse;
 @class AWSComprehendDescribePiiEntitiesDetectionJobRequest;
 @class AWSComprehendDescribePiiEntitiesDetectionJobResponse;
+@class AWSComprehendDescribeResourcePolicyRequest;
+@class AWSComprehendDescribeResourcePolicyResponse;
 @class AWSComprehendDescribeSentimentDetectionJobRequest;
 @class AWSComprehendDescribeSentimentDetectionJobResponse;
+@class AWSComprehendDescribeTargetedSentimentDetectionJobRequest;
+@class AWSComprehendDescribeTargetedSentimentDetectionJobResponse;
 @class AWSComprehendDescribeTopicsDetectionJobRequest;
 @class AWSComprehendDescribeTopicsDetectionJobResponse;
 @class AWSComprehendDetectDominantLanguageRequest;
@@ -335,6 +341,8 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @class AWSComprehendEntityTypesListItem;
 @class AWSComprehendEventsDetectionJobFilter;
 @class AWSComprehendEventsDetectionJobProperties;
+@class AWSComprehendImportModelRequest;
+@class AWSComprehendImportModelResponse;
 @class AWSComprehendInputDataConfig;
 @class AWSComprehendKeyPhrase;
 @class AWSComprehendKeyPhrasesDetectionJobFilter;
@@ -365,6 +373,8 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @class AWSComprehendListSentimentDetectionJobsResponse;
 @class AWSComprehendListTagsForResourceRequest;
 @class AWSComprehendListTagsForResourceResponse;
+@class AWSComprehendListTargetedSentimentDetectionJobsRequest;
+@class AWSComprehendListTargetedSentimentDetectionJobsResponse;
 @class AWSComprehendListTopicsDetectionJobsRequest;
 @class AWSComprehendListTopicsDetectionJobsResponse;
 @class AWSComprehendOutputDataConfig;
@@ -373,6 +383,8 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @class AWSComprehendPiiEntitiesDetectionJobProperties;
 @class AWSComprehendPiiEntity;
 @class AWSComprehendPiiOutputDataConfig;
+@class AWSComprehendPutResourcePolicyRequest;
+@class AWSComprehendPutResourcePolicyResponse;
 @class AWSComprehendRedactionConfig;
 @class AWSComprehendSentimentDetectionJobFilter;
 @class AWSComprehendSentimentDetectionJobProperties;
@@ -391,6 +403,8 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @class AWSComprehendStartPiiEntitiesDetectionJobResponse;
 @class AWSComprehendStartSentimentDetectionJobRequest;
 @class AWSComprehendStartSentimentDetectionJobResponse;
+@class AWSComprehendStartTargetedSentimentDetectionJobRequest;
+@class AWSComprehendStartTargetedSentimentDetectionJobResponse;
 @class AWSComprehendStartTopicsDetectionJobRequest;
 @class AWSComprehendStartTopicsDetectionJobResponse;
 @class AWSComprehendStopDominantLanguageDetectionJobRequest;
@@ -405,6 +419,8 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @class AWSComprehendStopPiiEntitiesDetectionJobResponse;
 @class AWSComprehendStopSentimentDetectionJobRequest;
 @class AWSComprehendStopSentimentDetectionJobResponse;
+@class AWSComprehendStopTargetedSentimentDetectionJobRequest;
+@class AWSComprehendStopTargetedSentimentDetectionJobResponse;
 @class AWSComprehendStopTrainingDocumentClassifierRequest;
 @class AWSComprehendStopTrainingDocumentClassifierResponse;
 @class AWSComprehendStopTrainingEntityRecognizerRequest;
@@ -413,6 +429,8 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @class AWSComprehendTag;
 @class AWSComprehendTagResourceRequest;
 @class AWSComprehendTagResourceResponse;
+@class AWSComprehendTargetedSentimentDetectionJobFilter;
+@class AWSComprehendTargetedSentimentDetectionJobProperties;
 @class AWSComprehendTopicsDetectionJobFilter;
 @class AWSComprehendTopicsDetectionJobProperties;
 @class AWSComprehendUntagResourceRequest;
@@ -938,6 +956,11 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @property (nonatomic, strong) NSString * _Nullable modelKmsKeyId;
 
 /**
+ <p>The resource-based policy to attach to your custom document classifier model. You can use this policy to allow another AWS account to import your custom model.</p><p>Provide your policy as a JSON body that you enter as a UTF-8 encoded string without line breaks. To provide valid JSON, enclose the attribute names and values in double quotes. If the JSON body is also enclosed in double quotes, then you must escape the double quotes that are inside the policy:</p><p><code>"{\"attribute\": \"value\", \"attribute\": [\"value\"]}"</code></p><p>To avoid escaping quotes, you can use single quotes to enclose the policy and double quotes to enclose the JSON names and values:</p><p><code>'{"attribute": "value", "attribute": ["value"]}'</code></p>
+ */
+@property (nonatomic, strong) NSString * _Nullable modelPolicy;
+
+/**
  <p>Enables the addition of output results configuration parameters for custom classifier jobs.</p>
  */
 @property (nonatomic, strong) AWSComprehendDocumentClassifierOutputDataConfig * _Nullable outputDataConfig;
@@ -1060,6 +1083,11 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @property (nonatomic, strong) NSString * _Nullable modelKmsKeyId;
 
 /**
+ <p>The JSON resource-based policy to attach to your custom entity recognizer model. You can use this policy to allow another AWS account to import your custom model.</p><p>Provide your JSON as a UTF-8 encoded string without line breaks. To provide valid JSON for your policy, enclose the attribute names and values in double quotes. If the JSON body is also enclosed in double quotes, then you must escape the double quotes that are inside the policy:</p><p><code>"{\"attribute\": \"value\", \"attribute\": [\"value\"]}"</code></p><p>To avoid escaping quotes, you can use single quotes to enclose the policy and double quotes to enclose the JSON names and values:</p><p><code>'{"attribute": "value", "attribute": ["value"]}'</code></p>
+ */
+@property (nonatomic, strong) NSString * _Nullable modelPolicy;
+
+/**
  <p>The name given to the newly created recognizer. Recognizer names can be a maximum of 256 characters. Alphanumeric characters, hyphens (-) and underscores (_) are allowed. The name must be unique in the account/region.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable recognizerName;
@@ -1158,6 +1186,32 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
  
  */
 @interface AWSComprehendDeleteEntityRecognizerResponse : AWSModel
+
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendDeleteResourcePolicyRequest : AWSRequest
+
+
+/**
+ <p>The revision ID of the policy to delete.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable policyRevisionId;
+
+/**
+ <p>The Amazon Resource Name (ARN) of the custom model version that has the policy to delete.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable resourceArn;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendDeleteResourcePolicyResponse : AWSModel
 
 
 @end
@@ -1399,6 +1453,47 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 /**
  
  */
+@interface AWSComprehendDescribeResourcePolicyRequest : AWSRequest
+
+
+/**
+ <p>The Amazon Resource Name (ARN) of the policy to describe.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable resourceArn;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendDescribeResourcePolicyResponse : AWSModel
+
+
+/**
+ <p>The time at which the policy was created.</p>
+ */
+@property (nonatomic, strong) NSDate * _Nullable creationTime;
+
+/**
+ <p>The time at which the policy was last modified.</p>
+ */
+@property (nonatomic, strong) NSDate * _Nullable lastModifiedTime;
+
+/**
+ <p>The revision ID of the policy. Each time you modify a policy, Amazon Comprehend assigns a new revision ID, and it deletes the prior version of the policy.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable policyRevisionId;
+
+/**
+ <p>The JSON body of the resource-based policy.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable resourcePolicy;
+
+@end
+
+/**
+ 
+ */
 @interface AWSComprehendDescribeSentimentDetectionJobRequest : AWSRequest
 
 
@@ -1419,6 +1514,32 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
  <p>An object that contains the properties associated with a sentiment detection job.</p>
  */
 @property (nonatomic, strong) AWSComprehendSentimentDetectionJobProperties * _Nullable sentimentDetectionJobProperties;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendDescribeTargetedSentimentDetectionJobRequest : AWSRequest
+
+
+/**
+ <p>The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobId;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendDescribeTargetedSentimentDetectionJobResponse : AWSModel
+
+
+/**
+ <p>An object that contains the properties associated with a targeted sentiment detection job.</p>
+ */
+@property (nonatomic, strong) AWSComprehendTargetedSentimentDetectionJobProperties * _Nullable targetedSentimentDetectionJobProperties;
 
 @end
 
@@ -1892,6 +2013,11 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
  <p> Provides output results configuration parameters for custom classifier jobs.</p>
  */
 @property (nonatomic, strong) AWSComprehendDocumentClassifierOutputDataConfig * _Nullable outputDataConfig;
+
+/**
+ <p>The Amazon Resource Name (ARN) of the source model. This model was imported from a different AWS account to create the document classifier model in your AWS account.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable sourceModelArn;
 
 /**
  <p>The status of the document classifier. If the status is <code>TRAINED</code> the classifier is ready to use. If the status is <code>FAILED</code> you can see additional information about why the classifier wasn't trained in the <code>Message</code> field.</p>
@@ -2431,7 +2557,7 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 
 
 /**
- <p>A measure of how accurate the recognizer results are for the test data. It is derived from the <code>Precision</code> and <code>Recall</code> values. The <code>F1Score</code> is the harmonic average of the two scores. The highest score is 1, and the worst score is 0. </p>
+ <p>A measure of how accurate the recognizer results are for the test data. It is derived from the <code>Precision</code> and <code>Recall</code> values. The <code>F1Score</code> is the harmonic average of the two scores. For plain text entity recognizer models, the range is 0 to 100, where 100 is the best score. For PDF/Word entity recognizer models, the range is 0 to 1, where 1 is the best score. </p>
  */
 @property (nonatomic, strong) NSNumber * _Nullable f1Score;
 
@@ -2610,6 +2736,11 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
  <p> Provides information about an entity recognizer.</p>
  */
 @property (nonatomic, strong) AWSComprehendEntityRecognizerMetadata * _Nullable recognizerMetadata;
+
+/**
+ <p>The Amazon Resource Name (ARN) of the source model. This model was imported from a different AWS account to create the entity recognizer model in your AWS account.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable sourceModelArn;
 
 /**
  <p>Provides the status of the entity recognizer.</p>
@@ -2811,6 +2942,57 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
  <p>The types of events that are detected by the job.</p>
  */
 @property (nonatomic, strong) NSArray<NSString *> * _Nullable targetEventTypes;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendImportModelRequest : AWSRequest
+
+
+/**
+ <p>The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM) role that allows Amazon Comprehend to use Amazon Key Management Service (KMS) to encrypt or decrypt the custom model.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable dataAccessRoleArn;
+
+/**
+ <p>ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt trained custom models. The ModelKmsKeyId can be either of the following formats:</p><ul><li><p>KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code></p></li><li><p>Amazon Resource Name (ARN) of a KMS Key: <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code></p></li></ul>
+ */
+@property (nonatomic, strong) NSString * _Nullable modelKmsKeyId;
+
+/**
+ <p>The name to assign to the custom model that is created in Amazon Comprehend by this import.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable modelName;
+
+/**
+ <p>The Amazon Resource Name (ARN) of the custom model to import.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable sourceModelArn;
+
+/**
+ <p>Tags to be associated with the custom model that is created by this import. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSComprehendTag *> * _Nullable tags;
+
+/**
+ <p>The version name given to the custom model that is created by this import. Version names can have a maximum of 256 characters. Alphanumeric characters, hyphens (-) and underscores (_) are allowed. The version name must be unique among all models with the same classifier name in the account/AWS Region.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable versionName;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendImportModelResponse : AWSModel
+
+
+/**
+ <p>The Amazon Resource Name (ARN) of the custom model being imported.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable modelArn;
 
 @end
 
@@ -3483,6 +3665,47 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 /**
  
  */
+@interface AWSComprehendListTargetedSentimentDetectionJobsRequest : AWSRequest
+
+
+/**
+ <p>Filters the jobs that are returned. You can filter jobs on their name, status, or the date and time that they were submitted. You can only set one filter at a time.</p>
+ */
+@property (nonatomic, strong) AWSComprehendTargetedSentimentDetectionJobFilter * _Nullable filter;
+
+/**
+ <p>The maximum number of results to return in each page. The default is 100.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable maxResults;
+
+/**
+ <p>Identifies the next page of results to return.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendListTargetedSentimentDetectionJobsResponse : AWSModel
+
+
+/**
+ <p>Identifies the next page of results to return.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+/**
+ <p>A list containing the properties of each job that is returned.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSComprehendTargetedSentimentDetectionJobProperties *> * _Nullable targetedSentimentDetectionJobPropertiesList;
+
+@end
+
+/**
+ 
+ */
 @interface AWSComprehendListTopicsDetectionJobsRequest : AWSRequest
 
 
@@ -3522,7 +3745,7 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @end
 
 /**
- <p>Provides configuration parameters for the output of topic detection jobs.</p><p/>
+ <p>Provides configuration parameters for the output of inference jobs.</p><p/>
  Required parameters: [S3Uri]
  */
 @interface AWSComprehendOutputDataConfig : AWSModel
@@ -3534,7 +3757,7 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @property (nonatomic, strong) NSString * _Nullable kmsKeyId;
 
 /**
- <p>When you use the <code>OutputDataConfig</code> object with asynchronous operations, you specify the Amazon S3 location where you want to write the output data. The URI must be in the same region as the API endpoint that you are calling. The location is used as the prefix for the actual location of the output file.</p><p>When the topic detection job is finished, the service creates an output file in a directory specific to the job. The <code>S3Uri</code> field contains the location of the output file, called <code>output.tar.gz</code>. It is a compressed archive that contains the ouput of the operation.</p>
+ <p>When you use the <code>OutputDataConfig</code> object with asynchronous operations, you specify the Amazon S3 location where you want to write the output data. The URI must be in the same region as the API endpoint that you are calling. The location is used as the prefix for the actual location of the output file.</p><p>When the topic detection job is finished, the service creates an output file in a directory specific to the job. The <code>S3Uri</code> field contains the location of the output file, called <code>output.tar.gz</code>. It is a compressed archive that contains the ouput of the operation.</p><p> For a PII entity detection job, the output file is plain text, not a compressed archive. The output file name is the same as the input file, with <code>.out</code> appended at the end. </p>
  */
 @property (nonatomic, strong) NSString * _Nullable s3Uri;
 
@@ -3700,9 +3923,45 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 @property (nonatomic, strong) NSString * _Nullable kmsKeyId;
 
 /**
- <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous operations, you specify the Amazon S3 location where you want to write the output data. </p>
+ <p>When you use the <code>PiiOutputDataConfig</code> object with asynchronous operations, you specify the Amazon S3 location where you want to write the output data. </p><p> For a PII entity detection job, the output file is plain text, not a compressed archive. The output file name is the same as the input file, with <code>.out</code> appended at the end. </p>
  */
 @property (nonatomic, strong) NSString * _Nullable s3Uri;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendPutResourcePolicyRequest : AWSRequest
+
+
+/**
+ <p>The revision ID that Amazon Comprehend assigned to the policy that you are updating. If you are creating a new policy that has no prior version, don't use this parameter. Amazon Comprehend creates the revision ID for you.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable policyRevisionId;
+
+/**
+ <p>The Amazon Resource Name (ARN) of the custom model to attach the policy to.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable resourceArn;
+
+/**
+ <p>The JSON resource-based policy to attach to your custom model. Provide your JSON as a UTF-8 encoded string without line breaks. To provide valid JSON for your policy, enclose the attribute names and values in double quotes. If the JSON body is also enclosed in double quotes, then you must escape the double quotes that are inside the policy:</p><p><code>"{\"attribute\": \"value\", \"attribute\": [\"value\"]}"</code></p><p>To avoid escaping quotes, you can use single quotes to enclose the policy and double quotes to enclose the JSON names and values:</p><p><code>'{"attribute": "value", "attribute": ["value"]}'</code></p>
+ */
+@property (nonatomic, strong) NSString * _Nullable resourcePolicy;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendPutResourcePolicyResponse : AWSModel
+
+
+/**
+ <p>The revision ID of the policy. Each time you modify a policy, Amazon Comprehend assigns a new revision ID, and it deletes the prior version of the policy.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable policyRevisionId;
 
 @end
 
@@ -4388,6 +4647,82 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 /**
  
  */
+@interface AWSComprehendStartTargetedSentimentDetectionJobRequest : AWSRequest
+
+
+/**
+ <p>A unique identifier for the request. If you don't set the client request token, Amazon Comprehend generates one.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable clientRequestToken;
+
+/**
+ <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend read access to your input data. For more information, see <a href="https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions">Role-based permissions</a>.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable dataAccessRoleArn;
+
+/**
+ <p>The input properties for an inference job.</p>
+ */
+@property (nonatomic, strong) AWSComprehendInputDataConfig * _Nullable inputDataConfig;
+
+/**
+ <p>The identifier of the job.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobName;
+
+/**
+ <p>The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend. All documents must be in the same language.</p>
+ */
+@property (nonatomic, assign) AWSComprehendLanguageCode languageCode;
+
+/**
+ <p>Specifies where to send the output files. </p>
+ */
+@property (nonatomic, strong) AWSComprehendOutputDataConfig * _Nullable outputDataConfig;
+
+/**
+ <p>Tags to be associated with the targeted sentiment detection job. A tag is a key-value pair that adds metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSComprehendTag *> * _Nullable tags;
+
+/**
+ <p>ID for the KMS key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:</p><ul><li><p>KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code></p></li><li><p>Amazon Resource Name (ARN) of a KMS Key: <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code></p></li></ul>
+ */
+@property (nonatomic, strong) NSString * _Nullable volumeKmsKeyId;
+
+/**
+ <p> Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for the job. For more information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Amazon VPC</a>. </p>
+ */
+@property (nonatomic, strong) AWSComprehendVpcConfig * _Nullable vpcConfig;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendStartTargetedSentimentDetectionJobResponse : AWSModel
+
+
+/**
+ <p>The Amazon Resource Name (ARN) of the targeted sentiment detection job. It is a unique, fully qualified identifier for the job. It includes the AWS account, Region, and the job ID. The format of the ARN is as follows:</p><p><code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:targeted-sentiment-detection-job/&lt;job-id&gt;</code></p><p>The following is an example job ARN:</p><p><code>arn:aws:comprehend:us-west-2:111122223333:targeted-sentiment-detection-job/1234abcd12ab34cd56ef1234567890ab</code></p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobArn;
+
+/**
+ <p>The identifier generated for the job. To get the status of a job, use this identifier with the operation.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobId;
+
+/**
+ <p>The status of the job. </p><ul><li><p>SUBMITTED - The job has been received and is queued for processing.</p></li><li><p>IN_PROGRESS - Amazon Comprehend is processing the job.</p></li><li><p>COMPLETED - The job was successfully completed and the output is available.</p></li><li><p>FAILED - The job did not complete. To get details, use the operation.</p></li></ul>
+ */
+@property (nonatomic, assign) AWSComprehendJobStatus jobStatus;
+
+@end
+
+/**
+ 
+ */
 @interface AWSComprehendStartTopicsDetectionJobRequest : AWSRequest
 
 
@@ -4650,6 +4985,37 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
 /**
  
  */
+@interface AWSComprehendStopTargetedSentimentDetectionJobRequest : AWSRequest
+
+
+/**
+ <p>The identifier of the targeted sentiment detection job to stop.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobId;
+
+@end
+
+/**
+ 
+ */
+@interface AWSComprehendStopTargetedSentimentDetectionJobResponse : AWSModel
+
+
+/**
+ <p>The identifier of the targeted sentiment detection job to stop.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobId;
+
+/**
+ <p>Either <code>STOP_REQUESTED</code> if the job is currently running, or <code>STOPPED</code> if the job was previously stopped with the <code>StopSentimentDetectionJob</code> operation.</p>
+ */
+@property (nonatomic, assign) AWSComprehendJobStatus jobStatus;
+
+@end
+
+/**
+ 
+ */
 @interface AWSComprehendStopTrainingDocumentClassifierRequest : AWSRequest
 
 
@@ -4764,6 +5130,107 @@ typedef NS_ENUM(NSInteger, AWSComprehendSyntaxLanguageCode) {
  */
 @interface AWSComprehendTagResourceResponse : AWSModel
 
+
+@end
+
+/**
+ <p>Provides information for filtering a list of dominant language detection jobs. For more information, see the operation.</p>
+ */
+@interface AWSComprehendTargetedSentimentDetectionJobFilter : AWSModel
+
+
+/**
+ <p>Filters on the name of the job.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobName;
+
+/**
+ <p>Filters the list of jobs based on job status. Returns only jobs with the specified status.</p>
+ */
+@property (nonatomic, assign) AWSComprehendJobStatus jobStatus;
+
+/**
+ <p>Filters the list of jobs based on the time that the job was submitted for processing. Returns only jobs submitted after the specified time. Jobs are returned in descending order, newest to oldest.</p>
+ */
+@property (nonatomic, strong) NSDate * _Nullable submitTimeAfter;
+
+/**
+ <p>Filters the list of jobs based on the time that the job was submitted for processing. Returns only jobs submitted before the specified time. Jobs are returned in ascending order, oldest to newest.</p>
+ */
+@property (nonatomic, strong) NSDate * _Nullable submitTimeBefore;
+
+@end
+
+/**
+ <p>Provides information about a targeted sentiment detection job.</p>
+ */
+@interface AWSComprehendTargetedSentimentDetectionJobProperties : AWSModel
+
+
+/**
+ <p>The Amazon Resource Name (ARN) that gives Amazon Comprehend read access to your input data.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable dataAccessRoleArn;
+
+/**
+ <p>The time that the targeted sentiment detection job ended.</p>
+ */
+@property (nonatomic, strong) NSDate * _Nullable endTime;
+
+/**
+ <p>The input properties for an inference job.</p>
+ */
+@property (nonatomic, strong) AWSComprehendInputDataConfig * _Nullable inputDataConfig;
+
+/**
+ <p>The Amazon Resource Name (ARN) of the targeted sentiment detection job. It is a unique, fully qualified identifier for the job. It includes the AWS account, Region, and the job ID. The format of the ARN is as follows:</p><p><code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:targeted-sentiment-detection-job/&lt;job-id&gt;</code></p><p>The following is an example job ARN:</p><p><code>arn:aws:comprehend:us-west-2:111122223333:targeted-sentiment-detection-job/1234abcd12ab34cd56ef1234567890ab</code></p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobArn;
+
+/**
+ <p>The identifier assigned to the targeted sentiment detection job.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobId;
+
+/**
+ <p>The name that you assigned to the targeted sentiment detection job.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable jobName;
+
+/**
+ <p>The current status of the targeted sentiment detection job. If the status is <code>FAILED</code>, the <code>Messages</code> field shows the reason for the failure.</p>
+ */
+@property (nonatomic, assign) AWSComprehendJobStatus jobStatus;
+
+/**
+ <p>The language code of the input documents.</p>
+ */
+@property (nonatomic, assign) AWSComprehendLanguageCode languageCode;
+
+/**
+ <p>A description of the status of a job.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable message;
+
+/**
+ <p>Provides configuration parameters for the output of inference jobs.</p><p/>
+ */
+@property (nonatomic, strong) AWSComprehendOutputDataConfig * _Nullable outputDataConfig;
+
+/**
+ <p>The time that the targeted sentiment detection job was submitted for processing.</p>
+ */
+@property (nonatomic, strong) NSDate * _Nullable submitTime;
+
+/**
+ <p>ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the targeted sentiment detection job. The VolumeKmsKeyId can be either of the following formats:</p><ul><li><p>KMS Key ID: <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code></p></li><li><p>Amazon Resource Name (ARN) of a KMS Key: <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code></p></li></ul>
+ */
+@property (nonatomic, strong) NSString * _Nullable volumeKmsKeyId;
+
+/**
+ <p> Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for the job. For more information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">Amazon VPC</a>. </p>
+ */
+@property (nonatomic, strong) AWSComprehendVpcConfig * _Nullable vpcConfig;
 
 @end
 

@@ -1,9 +1,77 @@
----
 # AWS Mobile SDK for iOS CHANGELOG
 
 ## Unreleased
 
 -Features for next release
+
+## 2.27.6
+
+### Misc. Updates
+
+- **AWSMobileClient**
+  - chore: Remove unused completion handler and cleanup (See [PR #4067](https://github.com/aws-amplify/aws-sdk-ios/pull/4067))
+
+## 2.27.5
+
+### Misc. Updates
+
+- **AWSMobileClient**
+  - chore: Modified getToken flow for hostedUI signIn (See [PR #4049](https://github.com/aws-amplify/aws-sdk-ios/pull/4049))
+
+- Model updates for the following services
+  - AWSLocation
+  - AWSPolly
+  - AWSEC2
+  - AWSLambda
+  - AWSTranscribe
+
+- **AWSCore**
+  - Improves `AWSSynchronizedMutableDictionary` and adds unit tests (See [PR #4051](https://github.com/aws-amplify/aws-sdk-ios/pull/4051))
+
+## 2.27.4
+
+### Misc. Updates
+
+- **AWSMobileClient**
+  - chore: Modified getToken flow for userpool signIn (See [PR #4022](https://github.com/aws-amplify/aws-sdk-ios/pull/4022))
+
+- Model updates for the following services
+  - AWSConnect
+  - AWSLambda
+  - AWSLocation
+  - AWSCognitoIdentityProvider
+
+## 2.27.3
+
+### Misc. Updates
+
+- Model updates for the following services
+  - AWSSTS
+  - AWSConnect
+  - AWSEC2
+  - AWSComprehend
+  - AWSTranscribe
+
+## 2.27.2
+
+### Bug Fixes
+
+- **AWSMobileClient**
+  - Clears old keychain if the configuration changes (See [PR #3853](https://github.com/aws-amplify/aws-sdk-ios/pull/3853))
+
+### Misc. Updates
+
+- Model updates for the following services
+  - AWSSNS
+  - AWSPinpoint
+  - AWSComprehend
+  - AWSDynamoDB
+  - AWSCognitoIdentityProvider
+  - AWSLambda
+  - AWSTextract
+  - AWSTranslate
+  - AWSAutoScaling
+
 
 ## 2.27.1
 

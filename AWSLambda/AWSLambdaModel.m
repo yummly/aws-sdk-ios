@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -98,6 +98,7 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
              @"eventSourceToken" : @"EventSourceToken",
              @"functionName" : @"FunctionName",
              @"principal" : @"Principal",
+             @"principalOrgID" : @"PrincipalOrgID",
              @"qualifier" : @"Qualifier",
              @"revisionId" : @"RevisionId",
              @"sourceAccount" : @"SourceAccount",
@@ -409,6 +410,7 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
              @"deadLetterConfig" : @"DeadLetterConfig",
              @"detail" : @"Description",
              @"environment" : @"Environment",
+             @"ephemeralStorage" : @"EphemeralStorage",
              @"fileSystemConfigs" : @"FileSystemConfigs",
              @"functionName" : @"FunctionName",
              @"handler" : @"Handler",
@@ -437,6 +439,10 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
 
 + (NSValueTransformer *)environmentJSONTransformer {
     return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSLambdaEnvironment class]];
+}
+
++ (NSValueTransformer *)ephemeralStorageJSONTransformer {
+    return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSLambdaEphemeralStorage class]];
 }
 
 + (NSValueTransformer *)fileSystemConfigsJSONTransformer {
@@ -527,6 +533,9 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
         if ([value caseInsensitiveCompare:@"dotnetcore3.1"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeDotnetcore31);
         }
+        if ([value caseInsensitiveCompare:@"dotnet6"] == NSOrderedSame) {
+            return @(AWSLambdaRuntimeDotnet6);
+        }
         if ([value caseInsensitiveCompare:@"nodejs4.3-edge"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeNodejs43Edge);
         }
@@ -586,6 +595,8 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
                 return @"dotnetcore2.1";
             case AWSLambdaRuntimeDotnetcore31:
                 return @"dotnetcore3.1";
+            case AWSLambdaRuntimeDotnet6:
+                return @"dotnet6";
             case AWSLambdaRuntimeNodejs43Edge:
                 return @"nodejs4.3-edge";
             case AWSLambdaRuntimeGo1X:
@@ -838,6 +849,20 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
 
 @end
 
+@implementation AWSLambdaEphemeralStorage
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{
+             @"size" : @"Size",
+             };
+}
+
+@end
+
 @implementation AWSLambdaEventSourceMappingConfiguration
 
 + (BOOL)supportsSecureCoding {
@@ -1028,6 +1053,7 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
              @"deadLetterConfig" : @"DeadLetterConfig",
              @"detail" : @"Description",
              @"environment" : @"Environment",
+             @"ephemeralStorage" : @"EphemeralStorage",
              @"fileSystemConfigs" : @"FileSystemConfigs",
              @"functionArn" : @"FunctionArn",
              @"functionName" : @"FunctionName",
@@ -1063,6 +1089,10 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
 
 + (NSValueTransformer *)environmentJSONTransformer {
     return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSLambdaEnvironmentResponse class]];
+}
+
++ (NSValueTransformer *)ephemeralStorageJSONTransformer {
+    return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSLambdaEphemeralStorage class]];
 }
 
 + (NSValueTransformer *)fileSystemConfigsJSONTransformer {
@@ -1244,6 +1274,9 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
         if ([value caseInsensitiveCompare:@"dotnetcore3.1"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeDotnetcore31);
         }
+        if ([value caseInsensitiveCompare:@"dotnet6"] == NSOrderedSame) {
+            return @(AWSLambdaRuntimeDotnet6);
+        }
         if ([value caseInsensitiveCompare:@"nodejs4.3-edge"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeNodejs43Edge);
         }
@@ -1303,6 +1336,8 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
                 return @"dotnetcore2.1";
             case AWSLambdaRuntimeDotnetcore31:
                 return @"dotnetcore3.1";
+            case AWSLambdaRuntimeDotnet6:
+                return @"dotnet6";
             case AWSLambdaRuntimeNodejs43Edge:
                 return @"nodejs4.3-edge";
             case AWSLambdaRuntimeGo1X:
@@ -2445,6 +2480,9 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
         if ([value caseInsensitiveCompare:@"dotnetcore3.1"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeDotnetcore31);
         }
+        if ([value caseInsensitiveCompare:@"dotnet6"] == NSOrderedSame) {
+            return @(AWSLambdaRuntimeDotnet6);
+        }
         if ([value caseInsensitiveCompare:@"nodejs4.3-edge"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeNodejs43Edge);
         }
@@ -2504,6 +2542,8 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
                 return @"dotnetcore2.1";
             case AWSLambdaRuntimeDotnetcore31:
                 return @"dotnetcore3.1";
+            case AWSLambdaRuntimeDotnet6:
+                return @"dotnet6";
             case AWSLambdaRuntimeNodejs43Edge:
                 return @"nodejs4.3-edge";
             case AWSLambdaRuntimeGo1X:
@@ -2638,6 +2678,9 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
         if ([value caseInsensitiveCompare:@"dotnetcore3.1"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeDotnetcore31);
         }
+        if ([value caseInsensitiveCompare:@"dotnet6"] == NSOrderedSame) {
+            return @(AWSLambdaRuntimeDotnet6);
+        }
         if ([value caseInsensitiveCompare:@"nodejs4.3-edge"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeNodejs43Edge);
         }
@@ -2697,6 +2740,8 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
                 return @"dotnetcore2.1";
             case AWSLambdaRuntimeDotnetcore31:
                 return @"dotnetcore3.1";
+            case AWSLambdaRuntimeDotnet6:
+                return @"dotnet6";
             case AWSLambdaRuntimeNodejs43Edge:
                 return @"nodejs4.3-edge";
             case AWSLambdaRuntimeGo1X:
@@ -3455,6 +3500,7 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
              @"deadLetterConfig" : @"DeadLetterConfig",
              @"detail" : @"Description",
              @"environment" : @"Environment",
+             @"ephemeralStorage" : @"EphemeralStorage",
              @"fileSystemConfigs" : @"FileSystemConfigs",
              @"functionName" : @"FunctionName",
              @"handler" : @"Handler",
@@ -3477,6 +3523,10 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
 
 + (NSValueTransformer *)environmentJSONTransformer {
     return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSLambdaEnvironment class]];
+}
+
++ (NSValueTransformer *)ephemeralStorageJSONTransformer {
+    return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSLambdaEphemeralStorage class]];
 }
 
 + (NSValueTransformer *)fileSystemConfigsJSONTransformer {
@@ -3546,6 +3596,9 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
         if ([value caseInsensitiveCompare:@"dotnetcore3.1"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeDotnetcore31);
         }
+        if ([value caseInsensitiveCompare:@"dotnet6"] == NSOrderedSame) {
+            return @(AWSLambdaRuntimeDotnet6);
+        }
         if ([value caseInsensitiveCompare:@"nodejs4.3-edge"] == NSOrderedSame) {
             return @(AWSLambdaRuntimeNodejs43Edge);
         }
@@ -3605,6 +3658,8 @@ NSString *const AWSLambdaErrorDomain = @"com.amazonaws.AWSLambdaErrorDomain";
                 return @"dotnetcore2.1";
             case AWSLambdaRuntimeDotnetcore31:
                 return @"dotnetcore3.1";
+            case AWSLambdaRuntimeDotnet6:
+                return @"dotnet6";
             case AWSLambdaRuntimeNodejs43Edge:
                 return @"nodejs4.3-edge";
             case AWSLambdaRuntimeGo1X:
